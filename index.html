@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TamaFocus - útulný Tamagotchi Pomodoro časovač pro soustředění a studium.">
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🥚%3C/text%3E%3C/svg%3E">
+    <title>TamaFocus | Tamagotchi Pomodoro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Nunito:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <header class="topbar">
+        <div class="container topbar-inner">
+            <a href="index.html" class="brand">TamaFocus</a>
+            <nav aria-label="Hlavní navigace" class="nav">
+                <a href="index.html" class="nav-link active">Časovač</a>
+                <a href="navod.html" class="nav-link">Návod</a>
+                <button type="button" id="theme-btn" class="pill-btn" aria-label="Přepnout noční režim">Večer</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Tamagotchi -->
+        <section class="tama-wrapper" aria-label="Tamagotchi Pomodoro časovač">
+            <!-- Horní kroužek na klíčenku -->
+            <div class="keychain-ring" aria-hidden="true"></div>
+
+            <div class="tama-shell">
+                <div class="tama-top-label">TAMAFOCUS</div>
+
+                <!-- Vnitřní rámeček displeje -->
+                <div class="lcd-bezel">
+                    <div class="lcd-screen" id="lcd-screen">
+                        <!-- Horní stavový řádek displeje -->
+                        <div class="lcd-header">
+                            <span class="lcd-mode" id="mode-label">PRÁCE • 20M</span>
+                            <span class="lcd-hearts" id="hearts-display" title="Dokončené bloky">♥ 0</span>
+                        </div>
+
+                        <!-- Velký čas uprostřed -->
+                        <div class="lcd-time" id="time-text" aria-live="polite">20:00</div>
+
+                        <!-- Roztomilý maskot uvnitř displeje -->
+                        <div class="pet-stage">
+                            <svg class="pet-svg" id="pet-svg" viewBox="0 0 160 95" role="img"
+                                aria-label="Virtuální studijní mazlíček">
+                                <!-- Stín pod postavičkou -->
+                                <ellipse cx="80" cy="84" rx="34" ry="6" fill="#6b422c" opacity="0.14" />
+
+                                <!-- Ouškа -->
+                                <rect x="54" y="10" width="14" height="26" rx="7" fill="#ffffff" stroke="#6b422c"
+                                    stroke-width="3.5" />
+                                <rect x="92" y="10" width="14" height="26" rx="7" fill="#ffffff" stroke="#6b422c"
+                                    stroke-width="3.5" />
+                                <rect x="58" y="15" width="6" height="14" rx="3" fill="#f4b6b8" />
+                                <rect x="96" y="15" width="6" height="14" rx="3" fill="#f4b6b8" />
+
+                                <!-- Tělíčko postavičky -->
+                                <path d="M44,64 C44,36 116,36 116,64 C116,80 102,84 80,84 C58,84 44,80 44,64 Z"
+                                    fill="#ffffff" stroke="#6b422c" stroke-width="3.5" />
+
+                                <!-- Růžové tvářičky -->
+                                <ellipse cx="58" cy="60" rx="7" ry="4.5" fill="#f5989d" opacity="0.75" />
+                                <ellipse cx="102" cy="60" rx="7" ry="4.5" fill="#f5989d" opacity="0.75" />
+
+                                <!-- Oči: výchozí klidné -->
+                                <g class="pet-eyes-idle">
+                                    <circle cx="67" cy="54" r="4" fill="#6b422c" />
+                                    <circle cx="93" cy="54" r="4" fill="#6b422c" />
+                                </g>
+
+                                <!-- Oči: zavřené při pauze -->
+                                <g class="pet-eyes-sleep">
+                                    <path d="M61,55 Q67,60 73,55" fill="none" stroke="#6b422c" stroke-width="3"
+                                        stroke-linecap="round" />
+                                    <path d="M87,55 Q93,60 99,55" fill="none" stroke="#6b422c" stroke-width="3"
+                                        stroke-linecap="round" />
+                                    <text x="116" y="34" font-family="Fredoka, sans-serif" font-size="13"
+                                        font-weight="700" fill="#6b422c">zZ</text>
+                                </g>
+
+                                <!-- Pusinka -->
+                                <path d="M76,61 Q80,65 84,61" fill="none" stroke="#6b422c" stroke-width="3"
+                                    stroke-linecap="round" />
+
+                                <!-- Malý sešit a tužka při režimu práce -->
+                                <g class="pet-study-prop">
+                                    <rect x="64" y="69" width="32" height="14" rx="3" fill="#fbe6e5" stroke="#6b422c"
+                                        stroke-width="2.5" />
+                                    <line x1="80" y1="69" x2="80" y2="83" stroke="#6b422c" stroke-width="2" />
+                                    <line x1="103" y1="63" x2="113" y2="75" stroke="#f09599" stroke-width="4"
+                                        stroke-linecap="round" />
+                                </g>
+                            </svg>
+                        </div>
+
+                        <div class="lcd-status" id="status-text">Stiskni B pro start</div>
+                    </div>
+                </div>
+
+                <!-- Tři tlačítka Tamagotchi -->
+                <div class="tama-buttons" role="group" aria-label="Ovládací tlačítka zařízení">
+                    <div class="btn-unit">
+                        <button type="button" id="btn-mode" class="tama-btn" aria-label="Přepnout režim (A)">A</button>
+                        <span>REŽIM</span>
+                    </div>
+                    <div class="btn-unit btn-center">
+                        <button type="button" id="btn-start" class="tama-btn tama-btn-main"
+                            aria-label="Spustit nebo pozastavit (B)">B</button>
+                        <span>START</span>
+                    </div>
+                    <div class="btn-unit">
+                        <button type="button" id="btn-reset" class="tama-btn"
+                            aria-label="Resetovat časovač (C)">C</button>
+                        <span>RESET</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seznam úkolů pod hračkou -->
+        <section class="tasks-card" aria-label="Úkoly na dnešek">
+            <div class="tasks-header">
+                <h2>Dnešní úkoly</h2>
+                <button type="button" id="sound-btn" class="pill-btn" aria-pressed="false">Zvuk: Vyp</button>
+            </div>
+            <form id="task-form" class="task-form">
+                <input type="text" id="task-input" placeholder="Co dnes dokončíme?" maxlength="75" required>
+                <button type="submit" class="add-btn">Přidat</button>
+            </form>
+            <ul id="task-list" class="task-list"></ul>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Vytvořeno pro předmět ZIT</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

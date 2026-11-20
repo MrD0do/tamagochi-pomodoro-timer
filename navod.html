@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jak ovládat kapesní Tamagotchi Pomodoro časovač TamaFocus.">
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🥚%3C/text%3E%3C/svg%3E">
+    <title>Návod | TamaFocus</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Nunito:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <header class="topbar">
+        <div class="container topbar-inner">
+            <a href="index.html" class="brand">TamaFocus</a>
+            <nav aria-label="Hlavní navigace" class="nav">
+                <a href="index.html" class="nav-link">Časovač</a>
+                <a href="navod.html" class="nav-link active">Návod</a>
+                <button type="button" id="theme-btn" class="pill-btn" aria-label="Přepnout noční režim">Večer</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <article class="info-card">
+            <span class="badge-tag">MANUÁL K ZAŘÍZENÍ</span>
+            <h1>Jak ovládat TamaFocus</h1>
+            <p>
+                TamaFocus spojuje techniku soustředěných pracovních bloků (Pomodoro) s retro kapesní hračkou.
+                Místo klikání v tabulkách ovládáš časovač třemi tlačítky přímo na těle vajíčka.
+            </p>
+
+            <h2>Význam tlačítek A, B a C</h2>
+            <div class="controls-guide">
+                <div class="guide-row">
+                    <span class="mini-key">A</span>
+                    <div>
+                        <strong>Tlačítko REŽIM</strong>
+                        <p>Přepíná mezi 20minutovým blokem práce, 5minutovou pauzou na čaj a 15minutovým odpočinkem.</p>
+                    </div>
+                </div>
+
+                <div class="guide-row">
+                    <span class="mini-key">B</span>
+                    <div>
+                        <strong>Tlačítko START / PAUZA</strong>
+                        <p>Spustí nebo pozastaví odpočet. Během práce si mazlíček vytáhne sešit a učí se spolu s tebou.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="guide-row">
+                    <span class="mini-key">C</span>
+                    <div>
+                        <strong>Tlačítko RESET</strong>
+                        <p>Vrátí aktuální odpočet zpět na začátek zvoleného intervalu.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Sbírání srdíček</h2>
+            <p>
+                Za každý dokončený pracovní blok získá tvůj mazlíček jedno srdíčko na horní liště displeje.
+                Počet srdíček i tvé zapsané úkoly se automaticky ukládají v prohlížeči.
+            </p>
+
+            <div class="cta-box">
+                <a href="index.html" class="add-btn">Zpět k časovači</a>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Vytvořeno pro předmět ZIT</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
